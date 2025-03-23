@@ -29,6 +29,7 @@ import AddIcon from '@mui/icons-material/Add';
 import { LogoutRounded as LogoutIcon } from '@mui/icons-material';
 import { api, Query, QueryResponse } from '../services/api';
 import { useNavigate } from 'react-router-dom';
+import SpeechToText from '../components/SpeechToText';
 
 const PageContainer = styled(Box)(({ theme }) => ({
   minHeight: '100vh',
@@ -240,6 +241,10 @@ const PatientDashboard = () => {
     }
   };
 
+  const handleSpeechTranscript = (text: string) => {
+    setNewQuery(prev => prev + (prev ? ' ' : '') + text);
+  };
+
   if (loading) {
     return (
       <PageContainer>
@@ -309,37 +314,36 @@ const PatientDashboard = () => {
             <Box component="form" onSubmit={handleSubmit}>
               <Grid container spacing={2}>
                 <Grid item xs={12}>
-                  <TextField
-                    fullWidth
-                    multiline
-                    rows={3}
-                    label="Health Query"
-                    value={newQuery}
-                    onChange={(e) => setNewQuery(e.target.value)}
-                    placeholder="Describe your health concern..."
-                    disabled={submitting}
-                    sx={{
-                      '& .MuiOutlinedInput-root': {
-                        '& fieldset': {
-                          borderColor: 'rgba(255, 255, 255, 0.23)',
+                  <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2, mb: 2 }}>
+                    <TextField
+                      fullWidth
+                      multiline
+                      rows={3}
+                      variant="outlined"
+                      placeholder="Type your medical question here..."
+                      value={newQuery}
+                      onChange={(e) => setNewQuery(e.target.value)}
+                      sx={{
+                        '& .MuiOutlinedInput-root': {
+                          backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                          '& fieldset': {
+                            borderColor: 'rgba(255, 255, 255, 0.2)',
+                          },
+                          '&:hover fieldset': {
+                            borderColor: 'rgba(255, 255, 255, 0.3)',
+                          },
+                          '&.Mui-focused fieldset': {
+                            borderColor: 'primary.main',
+                          },
+                          color: 'white',
                         },
-                        '&:hover fieldset': {
-                          borderColor: 'rgba(255, 255, 255, 0.5)',
+                        '& .MuiInputLabel-root': {
+                          color: 'rgba(255, 255, 255, 0.7)',
                         },
-                        '&.Mui-focused fieldset': {
-                          borderColor: 'primary.main',
-                        },
-                        color: 'white',
-                        borderRadius: '8px',
-                      },
-                      '& .MuiInputLabel-root': {
-                        color: 'rgba(255, 255, 255, 0.7)',
-                        '&.Mui-focused': {
-                          color: 'primary.main',
-                        },
-                      },
-                    }}
-                  />
+                      }}
+                    />
+                    <SpeechToText onTranscript={handleSpeechTranscript} />
+                  </Box>
                 </Grid>
                 <Grid item xs={12}>
                   <Box display="flex" gap={2} justifyContent="flex-end">
