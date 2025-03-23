@@ -64,18 +64,26 @@ A secure hospital-connected system that bridges the gap between patients and hea
    ```
 
 **With Docker (Recommended)**
+
 Ensure Docker and Docker Compose are installed.
 
 Navigate to the project directory:
+```bash
 cd patient_portal
+```
 Start the entire system (Backend, Database, Frontend) using:
-docker-compose up --build  
+```bash
+docker-compose up --build
+```
 Once the containers are running, access the app at:
-
+```bash
 http://localhost:5000  # Backend API
 http://localhost:3000  # Frontend (if applicable)
+```
 To stop the containers, use:
+```bash
 docker-compose down  
+```
 
 5. Configuration Settings:
    The application uses different configurations for development, testing, and production:
