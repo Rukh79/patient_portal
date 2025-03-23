@@ -36,14 +36,14 @@ A secure hospital-connected system that bridges the gap between patients and hea
 - **ORM**: SQLAlchemy
 - **Authentication**: Flask-Login
 - **Migration**: Flask-Migrate
-- **API Documentation**: Flask-RESTful
+
 
 ## Setup Instructions
 
 1. Clone the repository:
    ```bash
    git clone <repository-url>
-   cd patient-portal
+   cd patient_portal
    ```
 
 2. Create and activate virtual environment:
