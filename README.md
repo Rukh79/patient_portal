@@ -85,8 +85,6 @@ A secure hospital-connected system that bridges the gap between patients and hea
      ```
 
    Additional settings include:
-   - JWT configuration with 1-hour token expiry
-   - Mail server settings (Gmail SMTP by default)
    - AI service configuration
 
 6. Initialize the database:
