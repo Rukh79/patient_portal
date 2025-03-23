@@ -43,7 +43,7 @@ A secure hospital-connected system that bridges the gap between patients and hea
 1. Clone the repository:
    ```bash
    git clone <repository-url>
-   cd patient-clinic
+   cd patient-portal
    ```
 
 2. Create and activate virtual environment:
